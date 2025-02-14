@@ -1,0 +1,6 @@
+[package]
+name = "ratatui_simple_logger"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
