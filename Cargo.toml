@@ -3,6 +3,8 @@ name = "ratatui_simple_logger"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
+repository = "https://github.com/sanpii/ratatui_simple_logger"
+description = "Simple logger widget for ratatui"
 
 [dependencies]
 log = "0.4"
