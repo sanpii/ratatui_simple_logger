@@ -1,3 +1,6 @@
+[workspace.dependencies]
+log = "0.4"
+
 [package]
 name = "ratatui_simple_logger"
 version = "0.1.0"
@@ -7,5 +10,9 @@ repository = "https://github.com/sanpii/ratatui_simple_logger"
 description = "Simple logger widget for ratatui"
 
 [dependencies]
-log = "0.4"
+log.workspace = true
 ratatui = "0.29"
+
+[dev-dependencies.log]
+workspace = true
+features = ["std"]
