@@ -76,22 +76,34 @@ impl<'a> From<&'a log::Record<'a>> for Message {
 }
 
 #[derive(Default)]
-pub struct Widget;
+pub struct Widget {
+}
 
 impl Widget {
     pub fn new() -> Self {
-        Self
+        Self::default()
     }
 }
 
 impl ratatui::widgets::Widget for Widget {
-    fn render(self, area: ratatui::prelude::Rect, buf: &mut ratatui::prelude::Buffer) {
+    fn render(self, area: ratatui::layout::Rect, buf: &mut ratatui::buffer::Buffer) {
         let messages = LOGGER.messages();
         let block = ratatui::widgets::Block::bordered()
             .border_type(ratatui::widgets::BorderType::Rounded)
             .title("Logs");
 
+        let max_len = area.rows().count();
+
+        let mut state = ratatui::widgets::ListState::default()
+            .with_offset(messages.len().saturating_sub(max_len - 2));
         let list = ratatui::widgets::List::new(messages.iter()).block(block);
-        ratatui::widgets::Widget::render(list, area, buf);
+        ratatui::widgets::StatefulWidget::render(list, area, buf, &mut state);
+
+        let scrollbar =
+            ratatui::widgets::Scrollbar::new(ratatui::widgets::ScrollbarOrientation::VerticalRight);
+        let mut state = ratatui::widgets::ScrollbarState::default()
+            .content_length(messages.len())
+            .position(messages.len());
+        ratatui::widgets::StatefulWidget::render(scrollbar, area, buf, &mut state);
     }
 }
