@@ -76,8 +76,7 @@ impl<'a> From<&'a log::Record<'a>> for Message {
 }
 
 #[derive(Default)]
-pub struct Widget {
-}
+pub struct Widget {}
 
 impl Widget {
     pub fn new() -> Self {

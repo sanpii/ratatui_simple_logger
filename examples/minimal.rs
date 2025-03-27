@@ -6,8 +6,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 #[derive(Default)]
-struct App {
-}
+struct App {}
 
 impl App {
     fn run(
