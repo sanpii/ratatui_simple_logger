@@ -11,7 +11,7 @@ description = "Simple logger widget for ratatui"
 
 [dependencies]
 log.workspace = true
-ratatui = "0.29"
+ratatui = "0.30"
 
 [dev-dependencies.log]
 workspace = true
